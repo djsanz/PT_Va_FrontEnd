@@ -1,12 +1,14 @@
 {
   "eng": {
     "translation": {
-      "Home": "Home"
+      "Home": "Home",
+      "UserSelection": "User Selection"
     }
   },
   "es": {
     "translation": {
-      "Home": "Casa"
+      "Home": "Casa",
+      "UserSelection": "Selección de usuario"
     }
   }
 }
