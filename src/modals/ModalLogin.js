@@ -14,6 +14,12 @@ const ModalLogin = (props) => {
   const [Password, setPassword] = useState('');
   const { loginCtx } = useContext(UserContext)
 
+  const manejarKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      LoginUser();
+    }
+  };
+
   function CloseButtonImg(props) {
       return (
         <svg {...props} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" xmlns="http://www.w3.org/2000/svg">
@@ -61,7 +67,10 @@ const ModalLogin = (props) => {
                       </div>
                     </Dialog.Title>
                     <div className=" justify-center flex space-x-2 p-1 px-2 bg-gray-900 text-white rounded-b-lg lg:text-base text-sm">
-                      <input type="password" id="password" maxLength={8} value={Password} onChange={(e) => setPassword(e.target.value)} className="flex-1 bg-gray-700 rounded-md text-white px-2 py-1 text-sm font-medium w-8" placeholder={t('Password')}/>
+                      {props.jugador.dorsal} - {props.jugador.nombre}
+                    </div>
+                    <div className=" justify-center flex space-x-2 p-1 px-2 bg-gray-900 text-white rounded-b-lg lg:text-base text-sm">
+                      <input type="password" id="password" maxLength={8} value={Password} onChange={(e) => setPassword(e.target.value)} onKeyDown={manejarKeyPress} className="flex-1 bg-gray-700 rounded-md text-white px-2 py-1 text-sm font-medium w-8" placeholder={t('Password')}/>
                       {
                         Password.length < 1
                           ? <button disabled className="justify-center rounded-md bg-purple-700 px-2 py-1 text-sm font-medium text-white disabled:cursor-not-allowed disabled:opacity-25">{t('Login')}</button>

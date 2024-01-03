@@ -7,8 +7,8 @@ import { ProtectedRoute } from './hooks/LoginHook'
 import NavBar from './components/NavBar';
 import PieBar from './components/PieBar';
 import Home from './pages/Home'
-import Page1 from './pages/Page1';
-import Page2 from './pages/Page2';
+import PageVerEncuesta from './pages/VerEncuesta';
+import PageNuevaEncuesta from './pages/NuevaEncuesta';
 import PageUserPanel from './pages/UserPanel';
 
 export default function App() {
@@ -16,14 +16,14 @@ export default function App() {
   const DebugLvl = GetDebugLvl();
 
   return (
-    <div className="App bg-black text-white min-h-screen flex flex-col text-center overflow-x-clip">
+    <div className="App bg-black text-white min-h-screen flex flex-col text-center overflow-x-auto ">
       <UserProvider>
         <NavBar />
         <Routes>
           <Route path="/" element={<Home/>} />
-          <Route path="/Page1" element={<Page1/>} />
-          <Route path="/Page2" element={<Page2/>} />
           <Route path="/UserPanel" element={<ProtectedRoute> <PageUserPanel/> </ProtectedRoute>} />
+          <Route path="/NuevaEncuesta" element={<ProtectedRoute><PageNuevaEncuesta/></ProtectedRoute>} />
+          <Route path="/VerEncuesta/:idEncuesta" element={<ProtectedRoute><PageVerEncuesta/></ProtectedRoute>} />
           <Route path="*" element={<Home/>} />
         </Routes>
         <PieBar />

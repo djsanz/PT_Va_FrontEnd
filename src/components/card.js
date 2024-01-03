@@ -12,8 +12,8 @@ const PlayerCard = ({ jugador }) => {
       {
         ShowModalPassword
           ? (<ModalLogin isOpen={ShowModalPassword} jugador={jugador} closeModal={() => setShowModalPassword(false)}/>)
-          : null}
-      {/* {ShowModalPassword ? (<ModalPregunta Pregunta='Are you sure you want to remove your Discord account?' ReturnFuncion={() => BorraKey('discord')} isOpen={ShowModalPreguntaDiscord} closeModal={() => setShowModalPassword(false)}/>) : null} */}
+          : null
+      }
       <ImageLoader src={Imagen} alt={`Imagen ${jugador.dorsal}`} className="h-48"/>
       <p className="text-center mt-2">{jugador.dorsal} - {jugador.nombre}</p>
     </div>
