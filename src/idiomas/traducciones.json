@@ -2,13 +2,23 @@
   "eng": {
     "translation": {
       "Home": "Home",
-      "UserSelection": "User Selection"
+      "User Selection": "User Selection",
+      "Technical Test": "Technical Test",
+      "Enter your password": "Enter your password",
+      "Login": "Login",
+      "Incorrect password": "Incorrect password",
+      "Password": "Password"
     }
   },
   "es": {
     "translation": {
       "Home": "Casa",
-      "UserSelection": "Selección de usuario"
+      "User Selection": "Selección de usuario",
+      "Technical Test": "Prueba Técnica",
+      "Enter your password": "Ingrese su contraseña",
+      "Login": "Login",
+      "Incorrect password": "Contraseña incorrecta",
+      "Password": "Contraseña"
     }
   }
 }

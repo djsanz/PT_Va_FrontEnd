@@ -8,9 +8,9 @@ const DebugLvl = GetDebugLvl()
 
 export const ProtectedRoute = ({ children }) => {
     const { userCtx } = useContext(UserContext)
-    if (userCtx?.account === null) {
+    if (userCtx?.token === null) {
         if (DebugLvl >= 2){console.log("ProtectedRoute: User Not Logged In")}
-        // return <Navigate to="/" />;
+        return <Navigate to="/" />;
     }
     return children;
 };
