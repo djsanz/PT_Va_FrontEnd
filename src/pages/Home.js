@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React,{useEffect,useState} from "react";
 import { GetDebugLvl } from "../config/Entorno";
 import { useTranslation } from 'react-i18next';
@@ -31,8 +32,6 @@ export default function Home() {
           ))}
         </div>
       </div>
-
-
     </div>
   );
 }

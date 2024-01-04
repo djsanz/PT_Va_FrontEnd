@@ -3,15 +3,15 @@ import UserContext from '../contexts/UserContext';
 import ImageLoader from "../render/ImagenLoader";
 import { GetDebugLvl } from "../config/Entorno";
 import { GetEncuestasUser } from '../components/Api';
-import { useNavigate } from "react-router-dom";
+import ListadoEncuestas from '../components/ListadoEncuestas';
+import GraficasJugador from '../components/GraficasJugador';
 
 export default function UserPanel() {
   // eslint-disable-next-line
   const DebugLvl = GetDebugLvl();
   if (DebugLvl >= 2) console.log("Carga: UserPanel");
   const { userCtx, logoutCtx } = useContext(UserContext)
-  const navigate = useNavigate();
-  const FechaHoy = new Date();
+  const DateOptions = {year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'long'}
   const Imagen = require(`../images/Jugadores/${userCtx.dorsal}.png`)
   const [EncuestasRealizadas, setEncuestasRealizadas] = useState(null);
   const [ListadoFechas, setListadoFechas] = useState(null);
@@ -21,11 +21,11 @@ export default function UserPanel() {
     if (DebugLvl >= 2) console.log("Encuestas:",response)
     setEncuestasRealizadas(response);
     const fechas = [];
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 10; i++) {
       const fecha = new Date();
       fecha.setDate(fecha.getDate() - i);
       fechas.push({
-        Fecha:fecha.toLocaleDateString('es-ES'),
+        Fecha:fecha.toLocaleDateString('es-ES',DateOptions),
         Encuesta:response.find(encuesta => encuesta.fechaNormalizada === fecha.toLocaleDateString('es-ES'))
       });
     }
@@ -58,15 +58,10 @@ export default function UserPanel() {
         </div>
       </div>
       <div>
-      {
-        ListadoFechas?.map((item, index) => (
-            <div key={index} className={`border text-left flex-row flex rounded-xl mt-2 cursor-pointer hover:opacity-60 hover:bg-gray-500 ${item.Encuesta ? 'border-green-400' : 'border-red-600 bg-slate-800'}`}>
-               <div className="flex-1 ml-2" onClick={() => navigate(`${item.Encuesta ? '/VerEncuesta/'+item.Encuesta._id : '/NuevaEncuesta'}`)}>
-                    {item.Fecha} - {item.Encuesta ? 'Correcta' : <span className="text-red-500 font-bold">Sin realizar</span>}
-              </div>
-            </div>
-        ))
-      }
+        <ListadoEncuestas ListadoFechas={ListadoFechas} />
+      </div>
+      <div className="my-2">
+        <GraficasJugador Encuestas={EncuestasRealizadas}/>
       </div>
     </div>
   );

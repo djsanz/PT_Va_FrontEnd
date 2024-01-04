@@ -1,4 +1,3 @@
-// PlayerCard.js
 import React,{useState} from 'react';
 import ImageLoader from "../render/ImagenLoader";
 import ModalLogin from '../modals/ModalLogin'
