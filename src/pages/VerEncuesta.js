@@ -14,7 +14,6 @@ export default function VerEncuesta() {
 
   const GetEncuesta = async () => {
     const response = await GetEncuestaID(userCtx.token, idEncuesta)
-    console.log(response)
     setEncuesta(response);
   }
 

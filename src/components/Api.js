@@ -11,7 +11,6 @@ export const GetAllUsers = async () =>{
         const Resp = await AxiosAPI.get('user/GetAll')
         return Resp.data
     }catch (error) {
-        console.error(error)
         return null
     }
 }
@@ -27,7 +26,6 @@ export const GetEncuestasUser = async (Token) =>{
         })
         return Resp.data
     }catch (error) {
-        console.error(error)
         return null
     }
 }
@@ -40,7 +38,6 @@ export const GetEncuestaID = async (Token, Id) =>{
         Resp.data.fechaNormalizada = fechaNormalizada.toLocaleString('es-ES')
         return Resp.data
     }catch (error) {
-        console.error(error)
         return null
     }
 }
@@ -53,7 +50,6 @@ export const GetAllEncustas = async (Token) =>{
         const Resp = await AxiosAPI.get('encuesta', { headers: { Authorization: `Bearer ${Token}` }})
         return Resp.data
     }catch (error) {
-        console.error(error)
         return null
     }
 }
@@ -64,7 +60,6 @@ export const GetAllQuery = async () =>{
         const Resp = await AxiosAPI.get('query')
         return Resp.data
     }catch (error) {
-        console.error(error)
         return null
     }
 }
@@ -75,7 +70,6 @@ export const CreaQuery = async (Token, NuevaEncuesta) =>{
         const Resp = await AxiosAPI.post('encuesta', NuevaEncuesta, { headers: { Authorization: `Bearer ${Token}` } })
         return Resp.data
     }catch (error) {
-        console.error(error)
         return null
     }
 }
@@ -85,10 +79,8 @@ export const Login = async (dorsal,password) =>{
     const AxiosAPI = GetAxiosAPI()
     try{
         const Resp = await AxiosAPI.post('login',{dorsal,password})
-        console.log(Resp)
         return Resp.data
     }catch (error) {
-        console.error(error)
         return null
     }
 }

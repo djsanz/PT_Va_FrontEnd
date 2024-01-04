@@ -15,7 +15,6 @@ export default function NuevaEncuesta() {
   const [Listo, setListo] = useState(false)
 
   const GuardaRespuestas = async () => {
-    console.log('Guardando Respuestas')
     const respuestas = []
     for (let i = 0; i < Querys.length; i++) {
       respuestas.push({
@@ -27,9 +26,7 @@ export default function NuevaEncuesta() {
       userId: userCtx._id,
       respuestas: respuestas
     }
-    console.log('NuevaEncuesta:',NuevaEncuesta)
-    const Resp = await CreaQuery(userCtx.token, NuevaEncuesta)
-    console.log('Resp:',Resp)
+    await CreaQuery(userCtx.token, NuevaEncuesta)
     navigate('/UserPanel')
 
   }
@@ -39,7 +36,6 @@ export default function NuevaEncuesta() {
     for (let i = 0; i < response.length; i++) {
       response[i].seleccion = null
     }
-    console.log('Querys:',response)
     setQuerys(response);
   }
 
