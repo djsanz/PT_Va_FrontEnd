@@ -47,6 +47,17 @@ export const GetEncuestaID = async (Token, Id) =>{
 
 // Encuestas
 
+export const GetAllEncustas = async (Token) =>{
+    const AxiosAPI = GetAxiosAPI()
+    try{
+        const Resp = await AxiosAPI.get('encuesta', { headers: { Authorization: `Bearer ${Token}` }})
+        return Resp.data
+    }catch (error) {
+        console.error(error)
+        return null
+    }
+}
+
 export const GetAllQuery = async () =>{
     const AxiosAPI = GetAxiosAPI()
     try{

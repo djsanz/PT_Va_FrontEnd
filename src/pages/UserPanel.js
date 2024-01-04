@@ -5,6 +5,7 @@ import { GetDebugLvl } from "../config/Entorno";
 import { GetEncuestasUser } from '../components/Api';
 import ListadoEncuestas from '../components/ListadoEncuestas';
 import GraficasJugador from '../components/GraficasJugador';
+import GraficasAdmin from '../components/GraficasAdmin';
 
 export default function UserPanel() {
   // eslint-disable-next-line
@@ -49,20 +50,23 @@ export default function UserPanel() {
             <button className="bg-red-500 hover:bg-red-700 text-white text-sm font-bold p-1 rounded" onClick={() => logoutCtx()}>Logout</button>
           </div>
         </div>
-        <div className="w-full text-center self-center">
-          {/* {
-            !GetEncuestaFecha(FechaHoy)
-            ? <button className="bg-red-500 hover:bg-red-700 text-white text-sm font-bold p-1 rounded" onClick={() => navigate('/VerEncuesta/31')}>Encuesta de Hoy</button>
-            : <></>
-          } */}
-        </div>
       </div>
-      <div>
-        <ListadoEncuestas ListadoFechas={ListadoFechas} />
-      </div>
-      <div className="my-2">
-        <GraficasJugador Encuestas={EncuestasRealizadas}/>
-      </div>
+      {
+        userCtx.dorsal !== 0
+        ? <>
+            <div>
+              <ListadoEncuestas ListadoFechas={ListadoFechas} />
+            </div>
+            <div className="my-2">
+              <GraficasJugador Encuestas={EncuestasRealizadas}/>
+            </div>
+          </>
+        : <>
+            <div>
+              <GraficasAdmin />
+            </div>
+          </>
+      }
     </div>
   );
 }
