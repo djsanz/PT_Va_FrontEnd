@@ -11,20 +11,20 @@ import PageVerEncuesta from './pages/VerEncuesta';
 import PageNuevaEncuesta from './pages/NuevaEncuesta';
 import PageUserPanel from './pages/UserPanel';
 
-export default function App() {
+export default function App () {
   // eslint-disable-next-line
   const DebugLvl = GetDebugLvl();
 
   return (
-    <div className="App bg-black text-white min-h-screen flex flex-col text-center overflow-x-auto ">
+    <div className="App bg-gray-300 text-gray-900 min-h-screen flex flex-col text-center overflow-x-auto ">
       <UserProvider>
         <NavBar />
         <Routes>
-          <Route path="/" element={<Home/>} />
-          <Route path="/UserPanel" element={<ProtectedRoute> <PageUserPanel/> </ProtectedRoute>} />
-          <Route path="/NuevaEncuesta" element={<ProtectedRoute><PageNuevaEncuesta/></ProtectedRoute>} />
-          <Route path="/VerEncuesta/:idEncuesta" element={<ProtectedRoute><PageVerEncuesta/></ProtectedRoute>} />
-          <Route path="*" element={<Home/>} />
+          <Route path="/" element={<Home />} />
+          <Route path="/UserPanel" element={<ProtectedRoute> <PageUserPanel /> </ProtectedRoute>} />
+          <Route path="/NuevaEncuesta" element={<ProtectedRoute><PageNuevaEncuesta /></ProtectedRoute>} />
+          <Route path="/VerEncuesta/:idEncuesta" element={<ProtectedRoute><PageVerEncuesta /></ProtectedRoute>} />
+          <Route path="*" element={<Home />} />
         </Routes>
         <PieBar />
       </UserProvider>
